@@ -1,10 +1,11 @@
 package org.courses;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ShapeServices {
-    private static final int QUANTITY_OF_SHAPE = 5;
+    private static final List<TypeShapes> TYPE_SHAPES = Arrays.asList(TypeShapes.SQUARE_SHAPE, TypeShapes.LINE_SHAPE, TypeShapes.MULTI_SHAPE, TypeShapes.T_SHAPE, TypeShapes.Z_SHAPE);
     private static ShapeFactoryImpl shapeFactory = new ShapeFactoryImpl();
     private int numberShapeCreated;
 
@@ -28,7 +29,7 @@ public class ShapeServices {
     }
 
     public Shape getShape(int numberShape) {
-        if (numberShape < 0 || numberShape >= QUANTITY_OF_SHAPE) {
+        if (numberShape < 0 || numberShape >= TYPE_SHAPES.size()) {
             throw new IllegalArgumentException("Shape can be 0 - 4");
         }
         return shapeFactory.getShape(numberShape);
@@ -40,7 +41,7 @@ public class ShapeServices {
 
     private int generationRandom() {
 
-        return (int) (Math.random() * QUANTITY_OF_SHAPE);
+        return (int) (Math.random() * TYPE_SHAPES.size());
     }
 
     public void drawShape(List<Shape> shapeList) {
